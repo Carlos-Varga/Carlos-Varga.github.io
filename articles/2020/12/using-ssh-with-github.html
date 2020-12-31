@@ -1,0 +1,43 @@
+<meta charset="utf-8" emacsmode="-*- markdown -*-">
+   **Using SSH with Github**
+   Created: 30 Dec 2020
+   [More articles like this](../index.html)
+
+   Using a name/password login at Github is [being phased out in 2021](https://hackaday.com/2020/09/15/githubs-move-away-from-passwords-a-sign-of-things-to-come/) in favor of SSH login.  In order
+   to push your altered code to your repository on GitHub, you need to set up SSH login.
+
+Generate an SSH Key on Linux
+===================================================================
+   
+First, use your password manager to generate a strong password:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bash
+pass generate keys/ssh 25
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can retrieve to the clipboard like so: (you will need your master password)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bash
+pass -c keys/ssh
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use [ssh-keygen](http://man.openbsd.org/OpenBSD-current/man1/ssh-keygen.1#NAME) to generate 
+your SSH key and add a credential for SSH, required for Github.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bash
+ssh-keygen -t ed25519 -C "CarlosVarga@protonmail.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can now add your SSH keys to Github:
+https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/connecting-to-github-with-ssh
+
+
+
+
+
+
+ 
+
+<style class="fallback">body{visibility:hidden}</style><script>markdeepOptions={tocStyle:'medium'};</script>
+<!-- Markdeep: --><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js?" charset="utf-8"></script>
+
+

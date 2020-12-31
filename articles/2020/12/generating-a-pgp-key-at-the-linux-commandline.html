@@ -1,0 +1,95 @@
+<meta charset="utf-8" emacsmode="-*- markdown -*-">
+  **Generating a PGP key at the Linux commandline**
+  Created: 30 Dec 2020
+  [More articles like this](../index.html)
+
+Pretty Good Privacy (PGP) has been around forever.  It has a reputation 
+of being hard to use and even [experienced techies abandon it](https://arstechnica.com/information-technology/2016/12/op-ed-im-giving-up-on-pgp/) 
+for it's original purpose of encrypting messages.
+
+As far as I can tell, though, it's the defacto standard for digitally
+signing code and binaries as authentic and is utilized by Github, despite
+some [embarrassing vulnerabilities](https://arstechnica.com/information-technology/2018/06/decades-old-pgp-bug-allowed-hackers-to-spoof-just-about-anyones-signature/?itm_source=parsely-api)
+exposed and fixed a couple of years ago.
+
+Requirements
+==============================================================
+
+* email address 
+* [GnuPG](https://gnupg.org/documentation/manuals/gnupg/) installed:
+
+For Debian/Ubuntu/PureOS/Kali and derivatives:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bash
+sudo apt-get install gpg
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Generate a GPG Key
+==============================================================
+
+Create a passphrase for your GPG Key beforehand and store in your
+password manager - unless you are creating a GPG Key for your password manager!
+In that case, make one up, and make it strong.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ bash
+gpg --full-generate-key
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If there is an error, try again, making sure you type your 
+password correctly at the pop-up. You should see a dialog something like:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ none
+gpg (GnuPG) 2.2.12; Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+Your selection? 1
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072) 
+Requested keysize is 3072 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 0
+Key does not expire at all
+Is this correct? (y/N) y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: Joe Schmoe
+Email address: JoeSchmoe@fakeemail.com
+Comment: Password Storage Key
+You selected this USER-ID:
+    "Joe Schmoe (Password Storage Key) <JoeSchmoe@fakeemail.com>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: key 6D2C0C2AA9ACF366 marked as ultimately trusted
+gpg: revocation certificate stored as '/home/carlosvarga/.gnupg/openpgp-revocs.d/0808934223A65643E9BDBAEF6D2C0C2AA9ACF366.rev'
+public and secret key created and signed.
+
+pub   rsa3072 2020-12-30 [SC]
+      0808934223A65643E9BDBAEF6D2C0C2AA9ACF366
+uid                      Joe Schmoe (Password Storage Key) <JoeSchmoe@fakeemail.com>
+sub   rsa3072 2020-12-30 [E]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The code 0808934223A65643E9BDBAEF6D2C0C2AA9ACF366 is the key ID.
+
+<style class="fallback">body{visibility:hidden}</style><script>markdeepOptions={tocStyle:'medium'};</script>
+<!-- Markdeep: --><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js?" charset="utf-8"></script>
+
+

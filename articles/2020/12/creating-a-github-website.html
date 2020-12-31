@@ -1,0 +1,35 @@
+<meta charset="utf-8" emacsmode="-*- markdown -*-">
+   **Creating a GitHub Website**
+   Created: 30 Dec 2020
+   [More articles like this](../index.html)
+
+   GitHub allows you to create a free website associated with your account.  Take advantage.
+
+Create a Website Repository
+===================================================================
+
+Open your GitHub account and add a [github page](https://pages.github.com/), then open a terminal 
+and change to where you want the project:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bash
+git clone https://github.com/YourGitHubUserName/YourGitHubUserName.github.io
+cd YourGitHubUserName.github.io
+echo "Coming Soon" > index.html
+git add --all
+git commit -m "Initial commit"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Push to Github and Check
+===================================================================
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bash
+git push
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Github may take some time to update, but website should be visible at:
+
+https://YourGitHubUserName.github.io/
+
+You can also [point a custom domain to your page](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site)
+
+<style class="fallback">body{visibility:hidden}</style><script>markdeepOptions={tocStyle:'medium'};</script>
+<!-- Markdeep: --><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js?" charset="utf-8"></script>
